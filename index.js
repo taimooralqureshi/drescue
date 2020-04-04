@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require('cors');
-const saviour = require('./models/seeker-model');
 const saviourRoutes = require('./routers/saviour-routes');
 const seekerRoutes = require('./routers/seeker-routes');
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000;
 
 const app = express()
 
