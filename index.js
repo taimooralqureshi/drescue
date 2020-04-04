@@ -7,7 +7,6 @@ const seekerRoutes = require('./routers/seeker-routes');
 const port = process.env.port || 3000
 
 const app = express()
-// const url = process.env.MONGOLAB_URI;
 
 
 app.use(bodyParser.json({ type: "application/json"})).use(

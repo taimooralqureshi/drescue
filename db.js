@@ -1,6 +1,6 @@
 // const MongoClient = require('mongodb').MongoClient;
 const mongoose = require("mongoose");
-const url = "mongodb://tester:tester1@ds042677.mlab.com:42677/drescue";
+const url = process.env.MONGOLAB_URI;
 
 // const dbPath = "mongodb://<dbuser>:<dbpassword>@ds250607.mlab.com:38485/test-db";
 mongoose.connect(url, {
