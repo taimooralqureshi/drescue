@@ -36,17 +36,67 @@ router.get('/:id', async (req, res) => {
     
 });
 
+
 // Route to save new saviour - POST method
 router.post('/', async (req, res) => {
+
     try {
         // Save saviour to DB
+        
         const result = await saviour.create({
             name: req.body.name,
             phone: req.body.phone,
             location: req.body.location,
             password: req.body.password,
             type: req.body.type,
-            itemlist:req.body.itemlist
+            itemlists: req.body.itemlists
+        })
+
+
+        return res.json(result);
+            
+    } catch (error) {
+        // Handle erroe
+        // Display error in console
+        res.send(error);
+    }
+
+});
+
+
+// Route to get one saviour based on the ID - GET method
+router.post('/login', async (req, res) => {
+    try {
+         // Get the ID
+         
+         let phone = req.body.phone;
+         let password = req.body.password;
+
+         // Find the saviour from the ID
+         const result = await saviour.find({"phone":phone,"password":password}).exec();
+         // Send the result as the server response
+         return res.json(result);
+       } catch (error) {
+         // Handle error
+         // Display error in console
+         console.log(error);
+    }
+     
+ });
+ 
+// Route to signup new saviour - POST method
+router.post('/signup', async (req, res) => {
+
+    try {
+        // Save saviour to DB
+        
+        const result = await saviour.create({
+            name: req.body.name,
+            phone: req.body.phone,
+            location: req.body.location,
+            password: req.body.password,
+            type: req.body.type,
+           
         })
 
 
@@ -67,12 +117,15 @@ router.put('/:id', async (req, res) => {
         const id = req.params.id;
 
         // Update the saviour
-        result = await saviour.findByIdAndUpdate(id, {
-            name: req.body.name,
-            phone: req.body.phone,
-            location: req.body.location,
-            password: req.body.password
-        }).exec()
+        result = await saviour.findByIdAndUpdate(id, {$set:req.body
+            // name: req.body.name,
+            // phone: req.body.phone,
+            // location: req.body.location,
+            // password: req.body.password,
+            // type: req.body.type,
+            // itemlists: req.body.itemlists
+        },{new: true}).exec();
+    
 
         // Send the result as the server response
         return res.json(result);
