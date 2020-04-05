@@ -1,10 +1,11 @@
 // const MongoClient = require('mongodb').MongoClient;
 const mongoose = require("mongoose");
+require('dotenv').config();
 const url = process.env.MONGOLAB_URI;
 
-// const dbPath = "mongodb://<dbuser>:<dbpassword>@ds250607.mlab.com:38485/test-db";
 mongoose.connect(url, {
-    useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true
+    useNewUrlParser: true,  useUnifiedTopology: true, 
+    useCreateIndex: true, useFindAndModify: false
 });
 const db = mongoose.connection;
 db.on("error", () => {
