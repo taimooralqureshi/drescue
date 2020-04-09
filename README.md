@@ -15,34 +15,41 @@
         or
         npm run dev
 
+
+***
+## General routes
+> / </br>
+> /readme
+
 ***
 ## Seekers routes
 **GET method**              
-> seekers<br>
-> seekers/:id<br>
-> seekers/nic/:nic
+> /seekers<br>
+> /seekers/:id<br>
+> /seekers/nic/:nic
 
 **POST method**
-> seekers<br>
+> /seekers<br>
 
 **PUT method**
-> seekers/:id
+> /seekers/:id
 
 **DELETE method**
-> seekers/:id
+> /seekers/:id
+
 ***
 ## Saviours routes
 **GET method**              
-> saviours<br>
-> saviours/:id<br>
+> /saviours<br>
+> /saviours/:id<br>
 
 **POST method**
-> saviours<br>
-> saviours/login<br>
-> seeker/signup
+> /saviours<br>
+> /saviours/login<br>
+> /seeker/signup
 
 **PUT method**
-> saviours/:id
+> /saviours/:id
 
 **DELETE method**
-> saviours/:id
+> /saviours/:id
