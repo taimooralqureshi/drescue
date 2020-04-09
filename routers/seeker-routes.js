@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     } catch (error) {
       // Handle error
       // Display error in console
-      console.log(error);
+      return res.json({name: error.name, message: error.message});
     }
   });
   
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     } catch (error) {
       // Handle error
       // Display error in console
-      console.log(error);
+      return res.json({name: error.name, message: error.message});
     }
   });
   
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
     } catch (error) {
       // Handle error
       // Display error in console
-      console.log(error);
+      return res.json({name: error.name, message: error.message});
     }
   });
   
@@ -68,16 +68,17 @@ router.post("/", async (req, res) => {
         name : req.body.name,
         phone : req.body.phone,
         location : req.body.location,
-        UpdateOn : Date.now()
+        UpdateOn : Date.now(),
+        status : req.body.status
   
-    }).exec();
+    }, {new:true}).exec();
   
       // Send the result as the server response
       return res.json(result);
     } catch (error) {
       // Handle error
       // Display error in console
-      console.log(error);
+      return res.json({name: error.name, message: error.message});
     }
   });
   
@@ -95,8 +96,18 @@ router.post("/", async (req, res) => {
     } catch (error) {
       // Handle error
       // Display error in console
-      res.send(error);
+      return res.json({name: error.name, message: error.message});
     }
   });
-  
+  router.get('/nic/:nic', async (req, res) => {
+    try {
+      const result = await seeker.findOne({nic:res.params.nic}).exec();
+      
+      // returning the response 
+      return res.json(result);      
+    } catch (error) {
+      return res.json({name: error.name, message: error.message});
+    }  
+      
+  });
 module.exports = router;
