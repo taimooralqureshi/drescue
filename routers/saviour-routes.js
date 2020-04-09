@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     } catch (error) {
         // Handle error
         // Display error  in console
-        console.log(error);
+        return res.json({name:error.name, message:error.message});
     }
 });
 
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
       } catch (error) {
         // Handle error
         // Display error in console
-        console.log(error);
+        return res.json({name:error.name, message:error.message});
    }
     
 });
@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
     } catch (error) {
         // Handle erroe
         // Display error in console
-        res.send(error);
+        return res.json({name:error.name, message:error.message});
     }
 
 });
@@ -73,13 +73,13 @@ router.post('/login', async (req, res) => {
          let password = req.body.password;
 
          // Find the saviour from the ID
-         const result = await saviour.find({"phone":phone,"password":password}).exec();
+         const result = await saviour.findOne({"phone":phone,"password":password}).exec();
          // Send the result as the server response
          return res.json(result);
        } catch (error) {
          // Handle error
          // Display error in console
-         console.log(error);
+         return res.json({name:error.name, message:error.message});
     }
      
  });
@@ -105,7 +105,7 @@ router.post('/signup', async (req, res) => {
     } catch (error) {
         // Handle erroe
         // Display error in console
-        res.send(error);
+        return res.json({name:error.name, message:error.message});
     }
 
 });
@@ -132,7 +132,7 @@ router.put('/:id', async (req, res) => {
     } catch (error) {
         // Handle error
         // Display error in console
-        console.log(error);
+        return res.json({name:error.name, message:error.message});
     }
 });
 // Route to delete a saviour - DELETE method
@@ -149,7 +149,7 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
         // Handle error
         // Display error in console
-        console.log(error);
+        return res.json({name:error.name, message:error.message});
     }
 });
 
