@@ -5,7 +5,7 @@
 #### step to execute code
 - step # 1
 
-        git clone <url>
+        git clone https://github.com/taimooralqureshi/drescue.git
 - step # 2 
         
         npm install
